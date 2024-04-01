@@ -1,6 +1,6 @@
 const User = require("../models/user-model")
 
-const client = require('twilio')(accountSid, authToken);
+// const client = require('twilio')(accountSid, authToken);
 
 
 const home = async (req, res) => {
