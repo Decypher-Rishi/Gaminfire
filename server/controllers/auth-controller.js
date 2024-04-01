@@ -1,6 +1,5 @@
 const User = require("../models/user-model")
-const accountSid = 'ACef9816c993da3b2e7e6d62700ec53653';
-const authToken = '[AuthToken]';
+
 const client = require('twilio')(accountSid, authToken);
 
 
