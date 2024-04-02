@@ -5,35 +5,64 @@ export default function Home(e) {
 
     const [show, setShow] = useState(false)
     const [showOtp, setShowOtp] = useState(false)
+    const [otp, setOTP] = useState('');
+    // const [message, setMessage] = useState('');
     const [user, setUser] = useState({
-        username:"",
-        email:"",
-        phone:""
+        username: "",
+        email: "",
+        phone: ""
     })
-const handleInput = (e) =>{
-    let name = e.target.name;
-    let value = e.target.value;
-    setUser({
-        ...user,
-        [name]:value,
-    });
-}
-const handleSubmit = async (e) =>{
-e.preventDefault();
-console.log(user);
-const response = await fetch(`http://localhost:5000/api/auth/register`,{
-    method:"POST",
-    headers:{
-        'Content-Type': "application/json"
-    },
-    body:JSON.stringify(user),
-})
-if(response.ok){
-    setUser( {username:"", email:"", phone:""})
-}
-console.log(response)
-}
+  
+    const handleInput = (e) => {
+        let name = e.target.name;
+        let value = e.target.value;
+        setUser({
+            ...user,
+            [name]: value,
+        });
+    }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(user);
+        const response = await fetch(`http://localhost:5000/api/auth/register`, {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify(user),
+        })
+        if (response.ok) {
+            
+            setUser({ username: "", email: "", phone: "" })
+          
+        }
+     
+        console.log(response)
+    } 
  
+  
+    const handleVerify = async (e) => {
+        e.preventDefault();
+    
+        try {
+          // Send OTP for verification
+          const response = await fetch(`http://localhost:5000/api/auth/verify`, {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json"
+            },
+
+            // phoneNumber:user.phone,
+           body:JSON.stringify(otp) 
+          });
+    
+        //   setMessage(responsee.data.message);
+        } catch (error) {
+          console.error('Error verifying OTP:', error);
+        }
+      };
+    
+
     // const [state, handleSubmit] = useForm("xbjnkand");
     // if (state.succeeded) {
     //     return <Home name="Now you are part of us!" />
@@ -306,9 +335,9 @@ console.log(response)
                         <div className="container">
                             <div className="row align-items-center justify-content-between " >
                                 <div className="col-auto ">
-                                <div className= " about-logo "  ><a href="#home"><span data-mask-src="img/logonobg.png"
-                                            className="logo-mask"></span> <img style={{width:'175px',height:'50px'}} src="img/logo.png" alt="gaminfire" /></a>
-                                        </div>
+                                    <div className=" about-logo "  ><a href="#home"><span data-mask-src="img/logonobg.png"
+                                        className="logo-mask"></span> <img style={{ width: '175px', height: '50px' }} src="img/logo.png" alt="gaminfire" /></a>
+                                    </div>
                                 </div>
                                 <div className="col-auto">
                                     <nav className="main-menu d-none d-lg-inline-block">
@@ -335,8 +364,8 @@ console.log(response)
                                     <div className="header-button d-flex d-lg-none"><button onClick={()=>setMenu(true)} type="button"
                                         className="th-menu-toggle"><span className="btn-border"></span><i
                                             className="far fa-bars"></i></button></div>*/}
-                                </div> 
-                                <div  className=" col-auto d-block d-xl-block">
+                                </div>
+                                <div className=" col-auto d-block d-xl-block">
                                     <div className="header-button">
                                         <div id='streaming' className="d-xxl-block d-block"><a href="https://www.youtube.com/@players5" className="th-btn"><i
                                             className="fa-brands fa-youtube me-1"></i> Live Streaming</a></div>
@@ -414,28 +443,32 @@ console.log(response)
                                             data-wow-delay="0.2s">
 
                                         </div>
-                                        {show ?
 
-                                            <form onSubmit={handleSubmit}>
 
-                                                <div className="form-group">
+                                        <form onSubmit={handleSubmit}>
+
+                                            <div className="form-group">
                                                 <input className="form-control" value={user.username} onChange={handleInput} type="text" placeholder="Full Name" name="username" required="true" />
                                                 <input className="form-control" value={user.email} onChange={handleInput} type="email" placeholder="Email Address" name="email" required="true" />
-                                                    <input className="form-control" value={user.phone} onChange={handleInput} type="number" placeholder="Phone Number" name="phone" required="true" />
-                                                    {showOtp? 
-                                                        <input className="form-control" value={user.email} onChange={handleInput} type="text" placeholder="OTP" name="otp" required="true" />
-                                                       :null
-                                                    }
-                                                    <button type="submit" className="th-btn" onClick={()=>{setShowOtp(true)}} value="submit" name="submit" ><i className="fas fa-paper-plane"></i></button>
-                                                  
-                                                </div>
+                                                <input className="form-control" value={user.phone} onChange={handleInput} type="number" placeholder="Phone Number" name="phone" required="true" />
 
-                                            </form> :
+                                                <button type="submit" className="th-btn" onClick={() => { setShowOtp(true) }} value="submit" name="submit" ><i className="fas fa-paper-plane"></i></button>
 
-                                            <button className="th-btn style-border"><span
-                                                className="btn-border" onClick={() => setShow(true)}>JOIN NOW <i
-                                                    className="fa-solid fa-arrow-right ms-2"></i></span></button>
-                                        }   <h3>{e.name}</h3>
+                                            </div>
+                                            <form onSubmit={handleVerify}>
+                                         
+                                              
+                                         <input className="form-control" type="text" placeholder="OTP" value={otp} onChange={(e) => setOTP(e.target.value)} required="true" />
+                                 
+                                     <br />
+                                     <button type="submit">Verify OTP</button>
+                                 </form>
+                                        </form>
+                                     
+
+                                        {/* {message && <p>{message}</p>} */}
+
+                                        <h3>{e.name}</h3>
                                     </div>
 
                                 </div>
@@ -1549,7 +1582,7 @@ console.log(response)
                                 <div className="widget footer-widget">
                                     <div className="th-widget-about">
                                         <div className="about-logo"><a href="#home"><span data-mask-src="img/logonobg.png"
-                                            className="logo-mask"></span> <img style={{width:'200px',height:'200px'}} src="img/logonobg.png" alt="gaminfire" /></a>
+                                            className="logo-mask"></span> <img style={{ width: '200px', height: '200px' }} src="img/logonobg.png" alt="gaminfire" /></a>
                                         </div>
                                         <p className="about-text">Beyond gaming, include a broader calendar of gaming
                                             streams and news</p>
@@ -1558,9 +1591,9 @@ console.log(response)
                                             <div className="th-social style-mask"><a className="facebook"
                                                 href="https://www.youtube.com/@players5"><i className="fab fa-youtube"></i></a>
                                                 <a className="facebook"
-                                                href="https://www.instagram.com/ig_gaminfire/"><i className="fab fa-instagram"></i></a> 
+                                                    href="https://www.instagram.com/ig_gaminfire/"><i className="fab fa-instagram"></i></a>
                                                 <a className="facebook"
-                                                href="https://discord.gg/BguzYJwWfc"><i className="fab fa-discord"></i></a> </div>
+                                                    href="https://discord.gg/BguzYJwWfc"><i className="fab fa-discord"></i></a> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1606,7 +1639,7 @@ console.log(response)
                                         <div className="form-group"><input className="form-control" type="email"
                                             placeholder="Email Address" required="" /> <button type="submit" className="th-btn"><i
                                                 className="fas fa-paper-plane"></i></button>
-                                                </div>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

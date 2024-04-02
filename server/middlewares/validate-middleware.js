@@ -6,12 +6,12 @@ try{
 }catch(err){
    const status = 422;
     const message = "Fill the input properly"
-    const extraDetails= err.errors[0].message;
+    // const extraDetails= err.errors[0].message;
     // res.status(400).json({msg:message})
     const error ={
         status,
         message,
-        extraDetails
+        //extraDetails
     }
 
 

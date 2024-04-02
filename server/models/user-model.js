@@ -1,27 +1,31 @@
 const mongoose = require("mongoose")
 
 const userSchema = new mongoose.Schema({
-    username:{
-        type:String,
-        require:true
+    username: {
+        type: String,
+        require: true
     },
-    email:{
-        type:String,
-        require:true
+    email: {
+        type: String,
+        require: true
     },
-    phone:{
-        type:String,
-        require:true
+    phone: {
+        type: String,
+        require: true
     },
-    isAdmin:{
-        type:Boolean,
-        default:false
+    otp: {
+        type: String,
+        requre: false
+    },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
     },
 })
-
-
-
-
 
 const User = new mongoose.model("User", userSchema)
 
