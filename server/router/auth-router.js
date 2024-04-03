@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const authcontrollers = require("../controllers/auth-controller")
 const signupSchema = require("../validators/auth-validator")
-const verificationSchema = require("../validators/auth-validator")
+//const verificationSchema = require("../validators/auth-validator")
 const validate = require("../middlewares/validate-middleware")
 // router.get("/", (req,res)=>{
 //     res

@@ -1,7 +1,7 @@
 const User = require("../models/user-model")
 // const userVerify = require("../models/verify-model")
 const accountSid = 'ACef9816c993da3b2e7e6d62700ec53653';
-const authToken = '0649ced7136f8f4521752f23e74586d1';
+const authToken = '13e688a26791238ca9d4fb04a6fed0ba';
 const client = require('twilio')(accountSid, authToken);
 const twilioPhoneNumber = '+13345184035';
 
@@ -36,10 +36,10 @@ const register = async (req, res) => {
         const userExist = await User.findOne({ email })
         const userExistph = await User.findOne({ phone })
         if (userExist) {
-            return res.status(400).json({ msg: "email already exist" })
+            return res.status(400).json({ message: "email already exist" })
         }
         else if (userExistph) {
-            return res.status(400).json({ msg: "phone already exist" })
+            return res.status(400).json({ message: "phone already exist" })
         }
         await sendOTP(phone, OTP);
 
@@ -69,7 +69,7 @@ const register = async (req, res) => {
             .status(200)
             .json({ message: userCreated })
     } catch (error) {
-        //next(error)
+        next(error)
         console.log(error)
     }
 }
@@ -89,7 +89,7 @@ const verify = async (req, res) => {
         return res.status(200).json({ message: 'verified' });
     }
     catch (error) {
-        //next(error)
+        next(error)
         console.log(error)
     }
 }

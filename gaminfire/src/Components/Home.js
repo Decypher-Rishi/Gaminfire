@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
+import {toast} from 'react-toastify';
 // import { useForm } from '@formspree/react';
 
 export default function Home(e) {
 
-    const [show, setShow] = useState(false)
-    const [showOtp, setShowOtp] = useState(false)
-    const [otp, setOTP] = useState('');
+    // const [show, setShow] = useState(false)
+    // const [showOtp, setShowOtp] = useState(false)
+    // const [otp, setOTP] = useState('');
     // const [message, setMessage] = useState('');
     const [user, setUser] = useState({
         username: "",
         email: "",
         phone: ""
     })
-  
+
     const handleInput = (e) => {
         let name = e.target.name;
         let value = e.target.value;
@@ -31,37 +32,42 @@ export default function Home(e) {
             },
             body: JSON.stringify(user),
         })
+        const res_data = await response.json();
+        console.log("res from server", res_data.extraDetails);
         if (response.ok) {
-            
-            setUser({ username: "", email: "", phone: "" })
-          
-        }
-     
-        console.log(response)
-    } 
- 
-  
-    const handleVerify = async (e) => {
-        e.preventDefault();
-    
-        try {
-          // Send OTP for verification
-          const response = await fetch(`http://localhost:5000/api/auth/verify`, {
-            method: "POST",
-            headers: {
-                'Content-Type': "application/json"
-            },
 
-            // phoneNumber:user.phone,
-           body:JSON.stringify(otp) 
-          });
-    
-        //   setMessage(responsee.data.message);
-        } catch (error) {
-          console.error('Error verifying OTP:', error);
+            setUser({ username: "", email: "", phone: "" })
+
         }
-      };
-    
+        else {
+            toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message)
+        }
+
+        console.log(response)
+    }
+
+
+    // const handleVerify = async (e) => {
+    //     e.preventDefault();
+
+    //     try {
+    //       // Send OTP for verification
+    //       const response = await fetch(`http://localhost:5000/api/auth/verify`, {
+    //         method: "POST",
+    //         headers: {
+    //             'Content-Type': "application/json"
+    //         },
+
+    //         //phoneNumber:user.phone,
+    //        body:JSON.stringify(otp) 
+    //       });
+
+    //     //   setMessage(responsee.data.message);
+    //     } catch (error) {
+    //       console.error('Error verifying OTP:', error);
+    //     }
+    //   };
+
 
     // const [state, handleSubmit] = useForm("xbjnkand");
     // if (state.succeeded) {
@@ -452,19 +458,19 @@ export default function Home(e) {
                                                 <input className="form-control" value={user.email} onChange={handleInput} type="email" placeholder="Email Address" name="email" required="true" />
                                                 <input className="form-control" value={user.phone} onChange={handleInput} type="number" placeholder="Phone Number" name="phone" required="true" />
 
-                                                <button type="submit" className="th-btn" onClick={() => { setShowOtp(true) }} value="submit" name="submit" ><i className="fas fa-paper-plane"></i></button>
+                                                <button type="submit" className="th-btn"  value="submit" name="submit" ><i className="fas fa-paper-plane"></i></button>
 
                                             </div>
-                                            <form onSubmit={handleVerify}>
-                                         
-                                              
-                                         <input className="form-control" type="text" placeholder="OTP" value={otp} onChange={(e) => setOTP(e.target.value)} required="true" />
-                                 
-                                     <br />
-                                     <button type="submit">Verify OTP</button>
-                                 </form>
+
                                         </form>
-                                     
+                                        {/* <form onSubmit={handleVerify}>
+
+
+                                            <input className="form-control" type="text" placeholder="OTP" value={otp} onChange={(e) => setOTP(e.target.value)} required="true" />
+
+                                            <br />
+                                            <button type="submit">Verify OTP</button>
+                                        </form> */}
 
                                         {/* {message && <p>{message}</p>} */}
 
