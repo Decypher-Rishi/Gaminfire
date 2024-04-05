@@ -14,7 +14,7 @@ router.route("/").get(authcontrollers.home);
 
 router.route("/register").post(validate(signupSchema),authcontrollers.register)
 
-router.route("/verify").post(authcontrollers.verify)
+// router.route("/verify").post(authcontrollers.verify)
 
 
 module.exports = router;

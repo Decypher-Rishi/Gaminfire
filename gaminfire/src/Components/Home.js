@@ -37,7 +37,7 @@ export default function Home(e) {
         if (response.ok) {
 
             setUser({ username: "", email: "", phone: "" })
-
+            toast.success(res_data.message)
         }
         else {
             toast.error(res_data.extraDetails ? res_data.extraDetails : res_data.message)
@@ -442,9 +442,9 @@ export default function Home(e) {
                                     </div>
                                     <div className="title-area mb-0">
                                         <h2 className="sec-title text-white custom-anim-top wow animated" data-wow-duration="1.3s"
-                                            data-wow-delay="0.1s">Gamin<span  >Fire</span> Pre-Registration</h2>
-                                        <p className="mt-30 mb-30 custom-anim-top wow animated" data-wow-duration="1.3s"
-                                            data-wow-delay="0.2s">Register with us to enjoy limited time perks</p>
+                                            data-wow-delay="0.1s">Gamin<span  >Fire</span> Registration</h2>
+                                        <p className="mt-30 mb-30 text-white custom-anim-top wow animated" style={{fontSize:"20px"}} data-wow-duration="1.3s"
+                                            data-wow-delay="0.2s">Enjoy your first free 1/2 Hour*</p>
                                         <div className="btn-group custom-anim-top wow animated" data-wow-duration="1.3s"
                                             data-wow-delay="0.2s">
 
@@ -458,11 +458,13 @@ export default function Home(e) {
                                                 <input className="form-control" value={user.email} onChange={handleInput} type="email" placeholder="Email Address" name="email" required="true" />
                                                 <input className="form-control" value={user.phone} onChange={handleInput} type="number" placeholder="Phone Number" name="phone" required="true" />
 
-                                                <button type="submit" className="th-btn"  value="submit" name="submit" ><i className="fas fa-paper-plane"></i></button>
+                                                <button type="submit" className="th-btn"  value="submit" name="submit" ><i ></i>Click here</button>
 
                                             </div>
+                                        
 
                                         </form>
+                                        <p className='mt-30'>*Limited slots left</p>
                                         {/* <form onSubmit={handleVerify}>
 
 
@@ -474,7 +476,7 @@ export default function Home(e) {
 
                                         {/* {message && <p>{message}</p>} */}
 
-                                        <h3>{e.name}</h3>
+                                        {/* <h3>{e.name}</h3> */}
                                     </div>
 
                                 </div>

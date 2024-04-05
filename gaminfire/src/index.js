@@ -10,12 +10,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 <>
 <App />
-<ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} newestOnTop={false}
+<ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false}
 closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover
-theme="dark" font="helvectica" />
+theme="dark" />
 </>
    
-
 );
 
 
