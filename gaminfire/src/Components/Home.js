@@ -373,7 +373,7 @@ export default function Home(e) {
                                 </div>
                                 <div className=" col-auto d-block d-xl-block">
                                     <div className="header-button">
-                                        <div id='streaming' className="d-xxl-block d-block"><a href="https://www.youtube.com/@players5" className="th-btn"><i
+                                        <div id='streaming' className="d-xxl-block d-block"><a href="https://www.youtube.com/channel/UCNSR2ySkFaxOlfN_u8_JJZg" className="th-btn"><i
                                             className="fa-brands fa-youtube me-1"></i> Live Streaming</a></div>
                                     </div>
                                 </div>
@@ -456,7 +456,7 @@ export default function Home(e) {
                                             <div className="form-group">
                                                 <input className="form-control" value={user.username} onChange={handleInput} type="text" placeholder="Full Name" name="username" required="true" />
                                                 <input className="form-control" value={user.email} onChange={handleInput} type="email" placeholder="Email Address" name="email" required="true" />
-                                                <input className="form-control" value={user.phone} onChange={handleInput} type="number" placeholder="Phone Number" name="phone" required="true" />
+                                                <input className="form-control" value={user.phone} onChange={handleInput} type="number" placeholder="Whatsapp Number" name="phone" required="true" />
 
                                                 <button type="submit" className="th-btn"  value="submit" name="submit" ><i ></i>Click here</button>
 
@@ -1597,7 +1597,7 @@ export default function Home(e) {
                                         <h3 className="widget_title">Follow <span className="text-theme">With Us:</span></h3>
                                         <div className="th-widget-contact">
                                             <div className="th-social style-mask"><a className="facebook"
-                                                href="https://www.youtube.com/@players5"><i className="fab fa-youtube"></i></a>
+                                                href="https://www.youtube.com/channel/UCNSR2ySkFaxOlfN_u8_JJZg"><i className="fab fa-youtube"></i></a>
                                                 <a className="facebook"
                                                     href="https://www.instagram.com/ig_gaminfire/"><i className="fab fa-instagram"></i></a>
                                                 <a className="facebook"

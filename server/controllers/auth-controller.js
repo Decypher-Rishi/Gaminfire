@@ -67,7 +67,7 @@ const register = async (req, res) => {
         const userCreated = await User.create(userData)
         res
             .status(200)
-            .json({ message: "Your Unique gaming code will be sent to you shortly"})
+            .json({ message: "Your Unique GaminFire code will be sent to you in 24 hours"})
     } catch (error) {
         // next(error)
         console.log(error)
