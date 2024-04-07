@@ -52,7 +52,7 @@ export default function Home(e) {
 
     //     try {
     //       // Send OTP for verification
-    //       const response = await fetch(`http://localhost:5000/api/auth/verify`, {
+    //       const response = await fetch(`http://gaminfire-backend.vercel.app/api/auth/verify`, {
     //         method: "POST",
     //         headers: {
     //             'Content-Type': "application/json"
