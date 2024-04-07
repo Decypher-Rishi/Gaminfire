@@ -16,9 +16,9 @@ app.use(cors(corsOptions))
 
 app.use(express.json());
 
-app.get("/", (req,res)=>{
-    res.json("Welcome Rishi")
-});
+// app.get("/", (req,res)=>{
+//     res.json("Welcome Rishi")
+// });
 app.use("/api/auth", router);
 
 app.use(errorMiddleware)
