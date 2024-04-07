@@ -17,7 +17,7 @@ app.use(cors(corsOptions))
 app.use(express.json());
 
 app.get("/", (req,res)=>{
-    res.send("Welcome Rishi")
+    res.json("Welcome Rishi")
 });
 app.use("/api/auth", router);
 
