@@ -25,7 +25,7 @@ export default function Home(e) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(user);
-        const response = await fetch(`http://gaminfire-backend.vercel.app/api/auth/register`, {
+        const response = await fetch(`https://gaminfire-backend.vercel.app/api/auth/register`, {
             method: "POST",
             headers: {
                 'Content-Type': "application/json"
