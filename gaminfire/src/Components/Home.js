@@ -26,6 +26,7 @@ export default function Home(e) {
         e.preventDefault();
         console.log(user);
         const response = await fetch(`https://gaminfire-backend.vercel.app/api/auth/register`, {
+             mode: 'no-cors',
             method: "POST",
             headers: {
                 'Content-Type': "application/json"
