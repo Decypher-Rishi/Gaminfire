@@ -7,7 +7,7 @@ const errorMiddleware = require('./middlewares/error-middleware');
 const cors = require("cors");
 
 const corsOptions= {
-    origin: "http://gaminfire.vercel.app",
+    origin: "https://www.gaminfire.in",
     methods:"GET, POST, PUT, DELETE, PATCH, HEAD",
     credential:true,
 }
