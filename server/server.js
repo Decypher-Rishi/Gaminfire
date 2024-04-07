@@ -20,9 +20,9 @@ app.use("/api/auth", router);
 
 app.use(errorMiddleware)
 
-// app.get("/", (req,res)=>{
-//     res.status(200).send("Welcome Rishi")
-// });
+app.get("/", (req,res)=>{
+    res.status(200).send("Welcome Rishi")
+});
 
 // app.get("/register", (req,res)=>{
 //     res.status(200).send("Welcome to registration page rishi")
