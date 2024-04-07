@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 
-const URI = process.env.MONGODB_URI
+const URI = "mongodb+srv://Gaminfire:alone1320@gaminfire.ak5f5qa.mongodb.net/"
 
 //mongoose.connect(URI);
 
