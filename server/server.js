@@ -16,13 +16,13 @@ app.use(cors(corsOptions))
 
 app.use(express.json());
 
+app.get("/", (req,res)=>{
+    res.send("Welcome Rishi")
+});
 app.use("/api/auth", router);
 
 app.use(errorMiddleware)
 
-app.get("/", (req,res)=>{
-    res.send("Welcome Rishi")
-});
 
 // app.get("/register", (req,res)=>{
 //     res.status(200).send("Welcome to registration page rishi")
